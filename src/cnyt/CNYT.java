@@ -138,6 +138,7 @@ public class CNYT {
         System.out.println(capol.getEntero() + " + " + "(" + capol.getImaginario() + ")i");
         System.out.println(pocar.getEntero() + " + " + "(" + pocar.getImaginario() + ")i");
         System.out.println("La fase de a es: " + fase);
+        System.out.println("cos:" + Math.cos(2.0) + "sen: " + Math.sin(2.0) + " atan2: " + Math.atan2(2.0, 2.0));
     }
     
 }
