@@ -129,16 +129,15 @@ public class CNYT {
         double fase = prueba.fase(prueba.complejo1);
         
         System.out.println("a: " + prueba.complejo1.getEntero() + " + " + "(" + prueba.complejo1.getImaginario() + ")i" + " b: " + prueba.complejo2.getEntero() + "´+ " + "(" + prueba.complejo2.getImaginario() + ")i");
-        System.out.println(suma.getEntero() + " + " + "(" + suma.getImaginario() + ")i");
-        System.out.println(resta.getEntero() + " + " + "(" + resta.getImaginario() + ")i");
-        System.out.println(mult.getEntero() + " + " + "(" + mult.getImaginario() + ")i");
-        System.out.println(div.getEntero() + " + " + "(" + div.getImaginario() + ")i");
+        System.out.println("Suma: " + suma.getEntero() + " + " + "(" + suma.getImaginario() + ")i");
+        System.out.println("Resta: " + resta.getEntero() + " + " + "(" + resta.getImaginario() + ")i");
+        System.out.println("Producto: " + mult.getEntero() + " + " + "(" + mult.getImaginario() + ")i");
+        System.out.println("Division: " + div.getEntero() + " + " + "(" + div.getImaginario() + ")i");
         System.out.println("El modulo de a es: " + modulo);
-        System.out.println(conjugado.getEntero() + " + " + "(" + conjugado.getImaginario() + ")i");
-        System.out.println(capol.getEntero() + " + " + "(" + capol.getImaginario() + ")i");
-        System.out.println(pocar.getEntero() + " + " + "(" + pocar.getImaginario() + ")i");
+        System.out.println("Conjugado de a: " + conjugado.getEntero() + " + " + "(" + conjugado.getImaginario() + ")i");
+        System.out.println("Conversion de cartesiano a polar de a: " + capol.getEntero() + " + " + "(" + capol.getImaginario() + ")i");
+        System.out.println("Conversion de polar a cartesiano de a: " + pocar.getEntero() + " + " + "(" + pocar.getImaginario() + ")i");
         System.out.println("La fase de a es: " + fase);
-        System.out.println("cos:" + Math.cos(2.0) + "sen: " + Math.sin(2.0) + " atan2: " + Math.atan2(2.0, 2.0));
     }
     
 }
