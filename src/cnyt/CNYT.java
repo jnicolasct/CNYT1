@@ -67,6 +67,57 @@ public class CNYT {
         matriz2.add(v);
         matriz2.add(w);
     }
+
+    public ArrayList<Complejo> getVector1() {
+        return vector1;
+    }
+
+    public void setVector1(ArrayList<Complejo> vector1) {
+        this.vector1 = vector1;
+    }
+
+    public ArrayList<Complejo> getVector2() {
+        return vector2;
+    }
+
+    public void setVector2(ArrayList<Complejo> vector2) {
+        this.vector2 = vector2;
+    }
+
+    public ArrayList<ArrayList<Complejo>> getMatriz1() {
+        return matriz1;
+    }
+
+    public void setMatriz1(ArrayList<ArrayList<Complejo>> matriz1) {
+        this.matriz1 = matriz1;
+    }
+
+    public ArrayList<ArrayList<Complejo>> getMatriz2() {
+        return matriz2;
+    }
+
+    public void setMatriz2(ArrayList<ArrayList<Complejo>> matriz2) {
+        this.matriz2 = matriz2;
+    }
+
+    public Complejo getComplejo1() {
+        return complejo1;
+    }
+
+    public void setComplejo1(Complejo complejo1) {
+        this.complejo1 = complejo1;
+    }
+
+    public Complejo getComplejo2() {
+        return complejo2;
+    }
+
+    public void setComplejo2(Complejo complejo2) {
+        this.complejo2 = complejo2;
+    }
+    
+    
+    
     
     /*
     * Retorna la suma de dos numero complejos
@@ -163,6 +214,11 @@ public class CNYT {
         return a.fase();
     }
     
+    /*
+    * Retorna el vector dado una suma de dos vectores
+    * vec1 primer vector complejo
+    * vec2 segundo vector complejo
+    */
     public ArrayList<Complejo> sumaVec(ArrayList<Complejo> vec1, ArrayList<Complejo>vec2){
         ArrayList<Complejo> respuesta = new ArrayList<Complejo>();
         for (int i=0;i<vec1.size();i++){
@@ -171,6 +227,10 @@ public class CNYT {
         return respuesta;
     }
     
+    /*
+    * Retorna la inversa de un vector 
+    * vec1 vector  a invertir
+    */
     public ArrayList<Complejo> inversaVec(ArrayList<Complejo> vec1){
         ArrayList<Complejo> respuesta = new ArrayList<Complejo>();
         for (int i=0;i<vec1.size();i++){
@@ -180,6 +240,11 @@ public class CNYT {
         return respuesta;
     }
     
+    /*
+    * Retorna el vector de un producto entre un vector y un escalar
+    * vec1 vector complejo
+    * a escalar complejo
+    */
     public ArrayList<Complejo> multEscaVec(ArrayList<Complejo> vec1, Complejo a){
         ArrayList<Complejo> respuesta = new ArrayList<Complejo>();
         for (int i=0;i<vec1.size();i++){
@@ -189,120 +254,188 @@ public class CNYT {
         return respuesta;
     }
     
+    /*
+    * Retorna la suma de dos matrices 
+    * mat1 primer matriz compleja
+    * mat2 segunda matriz compleja
+    */
     public ArrayList<ArrayList<Complejo>> sumaMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
             Complejo z = sumaComp(mat1.get(i).get(j), mat2.get(i).get(j));
-            respuesta.get(i).add(j,z);
+            tmp.add(z);
             }
+        respuesta.add(tmp);
         }
         return respuesta;
     }
     
+    /*
+    * Retorna la inversa de una matriz
+    * mat1 matriz compleja a invertir
+    */
     public ArrayList<ArrayList<Complejo>> inversaMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
             Complejo z = new Complejo (mat1.get(i).get(j).getEntero()*-1, mat1.get(i).get(j).getImaginario()*-1);
-            respuesta.get(i).add(j,z);
+            tmp.add(z);
             }
+        respuesta.add(tmp);
         }
         return respuesta;
     }
-
+    
+    
+    /*
+    * Retorna la multiplicacion de una matriz y un escalar 
+    * mat1 matriz compleja
+    * a escalar complejo
+    */
     public ArrayList<ArrayList<Complejo>> multEscaMat(ArrayList<ArrayList<Complejo>> mat1, Complejo a){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
             Complejo z = multComp(mat1.get(i).get(j),a);
-            respuesta.get(i).add(j,z);
+            tmp.add(z);
             }
+        respuesta.add(tmp);
         }
         return respuesta;
     }
     
-    
+    /*
+    * Retorna la transpuesta de una matriz
+    * mat1 matriz compleja a transponer
+    */
     public ArrayList<ArrayList<Complejo>> transpuestaMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
-                respuesta.get(i).add(j,mat1.get(j).get(i));
+                tmp.add(mat1.get(j).get(i));
             }
+        respuesta.add(tmp);
         }
         return respuesta;
     }
     
+    /*
+    * Retorna el  conjugado de una matriz
+    * mat1 matriz compleja a conjugar
+    */
     public ArrayList<ArrayList<Complejo>> conjugadoMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
             Complejo z = conjugado(mat1.get(i).get(j));
-            respuesta.get(i).add(j,z);
+            tmp.add(z);
             }
+        respuesta.add(tmp);
         }
         return respuesta;
     }
     
+    /*
+    * Retorna la adjunta de una matriz
+    * mat1 matriz compleja
+    */
     public ArrayList<ArrayList<Complejo>> adjuntaMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> res = transpuestaMat(mat1);
         ArrayList<ArrayList<Complejo>> respuesta = conjugadoMat(res);
         return respuesta;
     }
     
+    /*
+    * Retorna la accion de una matriz sobre un vector
+    * mat1 matriz compleja
+    * vec1 vector complejo
+    */
     public ArrayList<Complejo> accionMatVec(ArrayList<ArrayList<Complejo>> mat1, ArrayList<Complejo> vec1 ){
         ArrayList<Complejo> respuesta = new ArrayList<Complejo>();
         Complejo suma = new Complejo(0,0);
         for (int i=0;i<mat1.size();i++){
+            suma = new Complejo(0,0);
             for (int j=0;j<mat1.get(1).size();j++){
-            suma = sumaComp(suma, multComp(mat1.get(i).get(j), vec1.get(j)));
+               suma = sumaComp(suma, multComp(mat1.get(i).get(j), vec1.get(j)));
             }
             respuesta.add(suma);
         }
         return respuesta;
     }
     
-    public double normaMat(ArrayList<ArrayList<Complejo>> mat1){
-        double respuesta = 0;
-        /*
+    /*
+    * Retorna la norma de una matriz
+    * mat1 matriz compleja
+    */
+    public Complejo normaMat(ArrayList<ArrayList<Complejo>> mat1){
+        Complejo respuesta;
         Complejo suma = new Complejo(0,0);
         for (int i=0;i<mat1.size();i++){
             for (int j=0;j<mat1.get(1).size();j++){
-            suma = sumaComp(suma, multComp(mat1.get(i).get(j), vec1.get(j)));
+            suma = sumaComp(suma, multComp(mat1.get(i).get(j), mat1.get(i).get(j)));
             }
-            respuesta.add(suma);
-        }*/
+        }
+        if (suma.getEntero()<0){
+            suma.setEntero(suma.getEntero()*-1);
+        }
+        if (suma.getImaginario()<0){
+            suma.setImaginario(suma.getImaginario()*-1);
+        }
+        respuesta = new Complejo(Math.sqrt(suma.getEntero()), Math.sqrt(suma.getImaginario()));
         return respuesta;
     }
     
-    public double distMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
-        double respuesta = 0;
-        /*
-        Complejo suma = new Complejo(0,0);
-        for (int i=0;i<mat1.size();i++){
-            for (int j=0;j<mat1.get(1).size();j++){
-            suma = sumaComp(suma, multComp(mat1.get(i).get(j), vec1.get(j)));
-            }
-            respuesta.add(suma);
-        }*/
+    /*
+    * Retorna la distancia entre dos matrices
+    * mat1 primer matriz compleja
+    * mat2 segunda matriz compleja
+    */
+    public Complejo distMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
+        ArrayList<ArrayList<Complejo>> nv1 = inversaMat(mat2);
+        ArrayList<ArrayList<Complejo>> nv2 = sumaMat(mat1,nv1);
+        Complejo respuesta = normaMat(nv2);
         return respuesta;
     }
     
+    /*
+    * Retorna la multiplicacion de dos matrices
+    * mat1 primer matriz compleja
+    * mat2 segunda matriz compleja
+    */
     public ArrayList<ArrayList<Complejo>> multMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
         ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<Complejo> tmp = new ArrayList<Complejo>();
         Complejo suma;
         for (int i=0;i<mat1.size();i++){
+            tmp = new ArrayList<Complejo>();
             for (int j=0;j<mat1.get(1).size();j++){
                 suma = new Complejo(0,0);
                 for (int k=0;k<mat1.get(1).size();k++){
                 suma= sumaComp(suma, multComp(mat1.get(i).get(k), mat2.get(k).get(j)));
                 }
-                respuesta.get(i).add(j, suma);
+                tmp.add(suma);
             }
+            respuesta.add(tmp);
         }
         return respuesta;
     }
     
+    /*
+    * Retorna si dos matrices son iguales
+    * mat1 primer matriz compleja
+    * mat2 segunda matriz complejo
+    */
     public boolean igualesMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
         for (int i=0;i<mat1.size();i++){
             for (int j=0;j<mat1.get(1).size();j++){
@@ -314,6 +447,25 @@ public class CNYT {
         return true;
     }
     
+    /*
+    * Retorna si dos vectores son iguales
+    * vec1 primer vector complejo
+    * vec2 segundo vector complejo
+    */
+    public boolean igualesVec(ArrayList<Complejo> vec1, ArrayList<Complejo> vec2){
+        
+        for (int i=0;i<vec1.size();i++){
+            if (vec1.get(i).getEntero()!= vec2.get(i).getEntero() || vec1.get(i).getImaginario()!= vec2.get(i).getImaginario() ){
+                    return false;
+            }
+        }
+        return true;
+    }
+    
+    /*
+    * Retorna si una matriz es unitaria
+    * mat1 matriz compleja a verificar
+    */
     public boolean unitariaMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> adjunta = adjuntaMat(mat1);
         ArrayList<ArrayList<Complejo>> res1 = multMat(mat1, adjunta);
@@ -321,15 +473,22 @@ public class CNYT {
         return igualesMat(res1,res2);
     }
     
-
+    /*
+    * Retorna si una matriz es hermitiana
+    * mat1 matriz compleja a verificar
+    */
     public boolean hermitianMat(ArrayList<ArrayList<Complejo>> mat1){
         ArrayList<ArrayList<Complejo>> adjunta = adjuntaMat(mat1);
         return igualesMat(mat1,adjunta);
     }    
     
-    
+    /*
+    * Retorna el producto tensor de dos matrices
+    * mat1 primer matriz compleja
+    * mat2 segunda matriz compleja
+    */
     public ArrayList<ArrayList<Complejo>> productoTensorMat(ArrayList<ArrayList<Complejo>> mat1, ArrayList<ArrayList<Complejo>> mat2){
-        ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>();
+        ArrayList<ArrayList<Complejo>> respuesta = new ArrayList<ArrayList<Complejo>>(); 
         for (int i=0;i<mat1.size();i++){
             for (int j=0;j<mat1.get(1).size();j++){
                 for (int k=0;k<mat2.size();k++){
